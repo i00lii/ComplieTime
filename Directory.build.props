@@ -1,0 +1,6 @@
+<Project>
+ <PropertyGroup>
+   <LangVersion>Latest</LangVersion>
+   <TargetFramework>netcoreapp2.1</TargetFramework>
+ </PropertyGroup>
+</Project>
