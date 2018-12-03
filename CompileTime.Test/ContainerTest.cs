@@ -34,5 +34,13 @@ namespace CompileTime.Test
             .Reverse()
             .Should()
             .Be( EmptyContainer.Push( 0 ).Push( 1 ).Push( 2 ) );
+
+        [Test]
+        public void ToArrayTest()
+            => EmptyContainer
+            .Push( 2 ).Push( 1 ).Push( 0 )
+            .ToArray()
+            .Should()
+            .ContainInOrder( 0, 1, 2 );
     }
 }
