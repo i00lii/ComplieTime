@@ -42,5 +42,13 @@ namespace CompileTime.Test
             .ToArray()
             .Should()
             .ContainInOrder( 0, 1, 2 );
+
+        [Test]
+        public void TransformTest()
+            => EmptyContainer
+            .Push( 1 ).Push( 0 )
+            .Transform( item => item.ToString() )
+            .Pop( item => item.Should().Be( "0" ) )
+            .Pop( item => item.Should().Be( "1" ) );
     }
 }
