@@ -26,5 +26,13 @@ namespace CompileTime.Test
 
             popped.Should().Be( 43 );
         }
+
+        [Test]
+        public void ReverseTest()
+            => EmptyContainer
+            .Push( 2 ).Push( 1 ).Push( 0 )
+            .Reverse()
+            .Should()
+            .Be( EmptyContainer.Push( 0 ).Push( 1 ).Push( 2 ) );
     }
 }
