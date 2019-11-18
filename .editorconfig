@@ -61,15 +61,42 @@ dotnet_style_prefer_conditional_expression_over_return = true:error
 ###############################
 
 # Style Definitions
-dotnet_naming_style.pascal_case_style.capitalization             = pascal_case
+dotnet_naming_style.pascal_case_style.capitalization = pascal_case
+dotnet_naming_style.camel_case_style.capitalization = camel_case
 
-# Use PascalCase for constant fields
-dotnet_naming_rule.constant_fields_should_be_pascal_case.severity = suggestion
-dotnet_naming_rule.constant_fields_should_be_pascal_case.symbols  = constant_fields
-dotnet_naming_rule.constant_fields_should_be_pascal_case.style    = pascal_case_style
-dotnet_naming_symbols.constant_fields.applicable_kinds            = field
-dotnet_naming_symbols.constant_fields.applicable_accessibilities  = *
-dotnet_naming_symbols.constant_fields.required_modifiers          = const
+dotnet_naming_style.underscore_prefix_style.required_prefix = _
+dotnet_naming_style.underscore_prefix_style.capitalization = camel_case
+
+dotnet_naming_style.i_prefix_style.required_prefix = I
+dotnet_naming_style.i_prefix_style.capitalization = pascal_case
+
+# Interfaces must be PascalCase and have an I prefix
+dotnet_naming_rule.interfaces_start_with_I.severity = error
+dotnet_naming_rule.interfaces_start_with_I.symbols = any_interface
+dotnet_naming_rule.interfaces_start_with_I.style = i_prefix_style
+dotnet_naming_symbols.any_interface.applicable_accessibilities = *
+dotnet_naming_symbols.any_interface.applicable_kinds = interface
+
+# Private fields should be underscored
+dotnet_naming_rule.private_fields_should_be_underscored.severity = error
+dotnet_naming_rule.private_fields_should_be_underscored.symbols = pivate_fields
+dotnet_naming_rule.private_fields_should_be_underscored.style = underscore_prefix_style
+dotnet_naming_symbols.pivate_fields.applicable_kinds = field
+dotnet_naming_symbols.pivate_fields.applicable_accessibilities = private
+
+# Classes, structs, methods, enums, events, properties, namespaces, delegates, type parameters and local methods must be PascalCase
+dotnet_naming_rule.general_naming.severity = error
+dotnet_naming_rule.general_naming.symbols = general
+dotnet_naming_rule.general_naming.style = pascal_case_style
+dotnet_naming_symbols.general.applicable_kinds = class,struct,enum,property,method,event,namespace,delegate,field,type_parameter,local_function
+dotnet_naming_symbols.general.applicable_accessibilities = *
+
+# Everything else is camelCase
+dotnet_naming_rule.everything_else_naming.severity = error
+dotnet_naming_rule.everything_else_naming.symbols = everything_else
+dotnet_naming_rule.everything_else_naming.style = camel_case_style
+dotnet_naming_symbols.everything_else.applicable_kinds = *
+dotnet_naming_symbols.everything_else.applicable_accessibilities = *
 
 ###############################
 # C# Code Style Rules         #
