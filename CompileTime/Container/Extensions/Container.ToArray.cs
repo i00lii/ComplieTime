@@ -31,7 +31,6 @@ namespace CompileTime
 
                 IEnumerable<Expression> EnumerateValues()
                 {
-                    Type containerType = typeof( TContainer );
                     Expression containerVariable = param;
 
                     while (containerVariable.Type != typeof( EmptyContainer<T> ))
