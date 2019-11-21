@@ -1,27 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace Test
 {
+    internal readonly struct BadState { }
+
     public class Program
     {
         public static void Main()
         {
-            Item item = default;
+            var initial = Context.Inilialize<TransitionBState>();
 
-            var a = item
-                .MoveToInitialState()
-                .MoveToState( default( ItemStateTransition ) )
-                .MoveToState( default( ItemStateTerminal ) );
+            Console.WriteLine( initial.State );
 
-            Console.WriteLine( a.State );
+            var transition = initial
+                .Move.To<TransitionAState>();
 
-            var b = item
-                .MoveToInitialState()
-                .MoveToState( default( ItemStateTerminal ) );
-
-            Console.WriteLine( b.State );
+            Console.WriteLine( transition.State );
         }
     }
 }
